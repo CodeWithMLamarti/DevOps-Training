@@ -4,7 +4,7 @@ pipeline{
         mvn "maven-3.9.9"
     }
     stages{
-        stage(name: 'build') {
+        stage('build') {
             steps {
                 script{
                     echo "Building the jar file..."
@@ -13,7 +13,7 @@ pipeline{
             }
         }
 
-        stage(name: 'create image') {
+        stage('create image') {
             environment {
                 DOCKER_CREDENTIALS = credentials('docker-credentials')
             }
@@ -26,7 +26,7 @@ pipeline{
             }
         }
 
-        stage(name: 'Deploy') {
+        stage('Deploy') {
             steps {
                 script {
                     echo "Deploying the app..."
